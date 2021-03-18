@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Graph;
 using Microsoft.OpenApi.Models;
 
 namespace dotnet_webapi_aad
@@ -30,7 +31,10 @@ namespace dotnet_webapi_aad
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+                .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"))
+                    .EnableTokenAcquisitionToCallDownstreamApi()
+                        .AddMicrosoftGraph(Configuration.GetSection("DownstreamApi"))
+                        .AddInMemoryTokenCaches();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
