@@ -6,11 +6,11 @@ For more info see https://aka.ms/dotnet-template-ms-identity-platform
 */
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",
-    "Domain": "microsoft.onmicrosoft.com",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "ClientId": "51997aa6-ec0d-457c-b62f-a0e914f17c1c",
+    "Domain": "qualified.domain.name",
+    "TenantId": "22222222-2222-2222-2222-222222222222",
+    "ClientId": "11111111-1111-1111-11111111111111111",
 
-    "ClientSecret": "See user secrets",
+    "ClientSecret": "secret-from-app-registration",
     "ClientCertificates" : [
     ],
     "CallbackPath": "/signin-oidc"
